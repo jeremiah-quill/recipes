@@ -110,7 +110,7 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
                     Sign up now and start assembling the last cookbook you'll ever need
                   </h3>
                   <p className="my-8">No paywall. No ads. Just an app to organize your recipes.</p>
-                  <button className="bg-slate-100 text-slate-800 border-2 border-slate-800 font-bold p-2 px-6 rounded justify-start">
+                  <button className="bg-slate-100 text-slate-800 border-2 border-slate-800 font-bold p-2 px-6 rounded justify-start hover:bg-slate-800 hover:text-slate-100 transition-colors">
                     Sign up
                   </button>
                 </div>
@@ -127,7 +127,10 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
                 by ingredient, custom tags, or a number of different fields and attributes.
               </p>
               <p>
-                Learn more in our <a className="border-b-2 border-slate-800">feature demo</a>
+                Learn more in our{" "}
+                <a href="#" className="border-b-2 border-slate-800">
+                  feature demo
+                </a>
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -151,24 +154,6 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
           </section>
         </>
       </Layout>
-      {/* <div className="bg-slate-100 min-h-[100vh] text-slate-800">
-        <header className="font-extrabold p-4 flex items-center">
-          <h1 className="text-2xl">Recipes</h1>
-          <nav className="ml-auto">
-            <ul className="flex gap-8">
-              <li>
-                <a href="#">Feed</a>
-              </li>
-              <li>
-                <a href="#">Sign In</a>
-              </li>
-              <li>
-                <a href="#">Sign up</a>
-              </li>
-            </ul>
-          </nav>
-        </header> */}
-      {/* </div> */}
     </>
   );
 }
