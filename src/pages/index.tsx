@@ -7,6 +7,10 @@ import { MdManageSearch } from "react-icons/md";
 import { IoShareOutline } from "react-icons/io5";
 import { GoChecklist } from "react-icons/go";
 import { BiRightArrowAlt } from "react-icons/bi";
+import { OutlineButton } from "../components/Button";
+import { GlowCard } from "../components/Card";
+import { IconTitle } from "../components/Title";
+import { CardCallout } from "../components/Card";
 
 export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRecipes: any }) {
   console.log(allUsers);
@@ -32,12 +36,8 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
                 use.
               </h3>
               <div className="flex gap-4">
-                <button className="bg-slate-100 text-slate-800 border-2 border-slate-800 font-bold p-2 px-6 rounded hover:bg-slate-800 hover:text-slate-100 transition-colors">
-                  Browse Recipes
-                </button>
-                <button className="bg-slate-100 text-slate-800 border-2 border-slate-800 font-bold p-2 px-6 rounded hover:bg-slate-800 hover:text-slate-100 transition-colors">
-                  Feature Demo
-                </button>
+                <OutlineButton>Browse Recipes</OutlineButton>
+                <OutlineButton>Feature Demo</OutlineButton>
               </div>
             </div>
             <div>
@@ -53,53 +53,45 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
             </div>
           </div>
           <section className="p-4 max-w-7xl mx-auto my-64 grid md:grid-cols-3 gap-3">
-            <a
-              href="#"
-              className="border border-slate-300 p-3 flex flex-col group shadow-lg shadow-orange-300">
-              <h3 className="text-xl font-bold flex gap-2 items-center">
+            <GlowCard className="group" twColor="shadow-orange-300">
+              <IconTitle text="Manage">
                 <MdManageSearch className="text-3xl" />
-                Manage
-              </h3>
+              </IconTitle>
               <p className="p-4">
                 Take control of your eating habits and save time in the kitchen, plus never forget a
                 recipe again.
               </p>
-              <div className="flex gap-1 ml-auto mt-auto items-center">
+              <CardCallout>
                 <div className="group-hover:underline">Learn our motivation</div>
                 <BiRightArrowAlt className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </a>
-            <a
-              href="#"
-              className="border border-slate-300 p-3 flex flex-col group shadow-lg shadow-green-300">
-              <h3 className="text-xl font-bold flex gap-2 items-center">
+              </CardCallout>
+            </GlowCard>
+            <GlowCard className="group" twColor="shadow-green-300">
+              <IconTitle text="Share">
                 <IoShareOutline className="text-4xl" />
-                Share
-              </h3>
+              </IconTitle>
               <p className="p-4">
                 Explore our public feed to discover new recipes, or publish your own recipes to
                 share.
               </p>
-              <div className="flex gap-1 ml-auto mt-auto items-center">
+              <CardCallout>
                 <div className="group-hover:underline">View public recipes</div>
                 <BiRightArrowAlt className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </a>
-            <a
-              href="#"
-              className="border border-slate-300 p-3 flex flex-col group shadow-lg shadow-yellow-300">
-              <h3 className="text-xl font-bold flex gap-2 items-center">
+              </CardCallout>
+            </GlowCard>
+            <GlowCard className="group" twColor="shadow-yellow-300">
+              <IconTitle text="Prepare">
                 <GoChecklist className="text-4xl" />
-                Prepare
-              </h3>
+              </IconTitle>
               <p className="p-4">
                 Choose your meals for the week and export the ingredients to a shopping list.
               </p>
-              <div className="flex gap-1 ml-auto mt-auto items-center">
+              <CardCallout>
                 <div className="group-hover:underline">Demo our features</div>
                 <BiRightArrowAlt className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </a>
+              </CardCallout>
+              <div className="flex gap-1 ml-auto mt-auto items-center"></div>
+            </GlowCard>
           </section>
           <section className="my-64 bg-green-300 overflow-hidden">
             <div className="max-w-7xl grid md:grid-cols-2 mx-auto  ">
@@ -110,9 +102,7 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
                     Sign up now and start assembling the last cookbook you'll ever need
                   </h3>
                   <p className="my-8">No paywall. No ads. Just an app to organize your recipes.</p>
-                  <button className="bg-slate-100 text-slate-800 border-2 border-slate-800 font-bold p-2 px-6 rounded justify-start hover:bg-slate-800 hover:text-slate-100 transition-colors">
-                    Sign up
-                  </button>
+                  <OutlineButton className="inline-block">Sign up</OutlineButton>
                 </div>
               </div>
             </div>
