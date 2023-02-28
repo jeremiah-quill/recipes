@@ -1,5 +1,5 @@
 export function Title({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <h3 className="text-xl font-bold flex gap-2 items-center">{children}</h3>;
+  return <div className="text-xl font-bold flex gap-2 items-center">{children}</div>;
 }
 
 export function IconTitle({
