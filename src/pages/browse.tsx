@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
 
-export default function browsePage() {
+export default function BrowsePage() {
   return <Layout>demo page</Layout>;
 }

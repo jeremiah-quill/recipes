@@ -13,6 +13,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <nav className="ml-auto">
           <ul className="flex gap-8 items-center">
             <li>
+              <a href="/profile">Profile</a>
+            </li>
+            <li>
               <a href="#">About</a>
             </li>
             <li>
@@ -27,7 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className="flex gap-2 items-center border-2 border-slate-800 px-2 py-1 rounded">
                   <div>{session.user?.email}</div>
                   <img
-                    src={session.user?.image}
+                    src={session.user?.image!}
                     alt="profile picture"
                     className="w-10 rounded-full border-2 border-slate-800"
                   />
