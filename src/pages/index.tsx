@@ -11,6 +11,7 @@ import { OutlineButton } from "../components/Button";
 import { GlowCard } from "../components/Card";
 import { IconTitle } from "../components/Title";
 import { CardCallout } from "../components/Card";
+import { getSession } from "next-auth/react";
 
 export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRecipes: any }) {
   console.log(allUsers);
@@ -143,12 +144,25 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
             </div>
           </section>
         </>
+        <footer className="h-[250px] bg-slate-300 grid place-items-center text-3xl font-bold">
+          Footer
+        </footer>
       </Layout>
     </>
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context: any) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/cookbook",
+        permanent: false,
+      },
+    };
+  }
   const prisma = new PrismaClient();
 
   const allUsers = await prisma.user.findMany({

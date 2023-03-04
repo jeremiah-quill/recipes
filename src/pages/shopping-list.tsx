@@ -4,7 +4,10 @@ import DashboardLayout from "@/components/DashboardLayout";
 export default function ShoppingListPage() {
   return (
     <DashboardLayout>
-      <div className="p-2 w-full">shopping list</div>
+      <>
+        <h1>Shopping List</h1>
+        <p>This is the Shopping List page. It is protected by authentication.</p>
+      </>
     </DashboardLayout>
   );
 }

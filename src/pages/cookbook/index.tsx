@@ -1,16 +1,18 @@
 import { getSession } from "next-auth/react";
 import DashboardLayout from "../../components/DashboardLayout";
 
-export default function RecipePage({ recipe }) {
-  console.log(recipe);
+export default function CookbookPage() {
   return (
     <DashboardLayout>
-      <div className="p-2">recipe details for {recipe}</div>
+      <>
+        <h1>Cookbook index</h1>
+        <p>This is the Cookbook index page. It is protected by authentication.</p>
+      </>
     </DashboardLayout>
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   const session = await getSession(context);
 
   if (!session) {
@@ -22,10 +24,8 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const { recipe } = context.params; // Use `context.params` to get dynamic params
-  console.log("recipe", recipe);
-
+  // TODO: get all users recipes and pass to props
   return {
-    props: { recipe },
+    props: {},
   };
 }
