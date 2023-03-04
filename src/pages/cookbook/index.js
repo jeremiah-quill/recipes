@@ -1,15 +1,15 @@
-import Layout from "../components/Layout";
 import { getSession } from "next-auth/react";
+import DashboardLayout from "../../components/DashboardLayout";
 
-export default function ProfilePage() {
+export default function CookbookPage() {
   return (
-    <Layout>
-      <div>you should only see this if you're logged in</div>
-    </Layout>
+    <DashboardLayout>
+      <div className="p-2">dashboard index</div>
+    </DashboardLayout>
   );
 }
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(context) {
   const session = await getSession(context);
 
   if (!session) {

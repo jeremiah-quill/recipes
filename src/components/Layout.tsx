@@ -5,7 +5,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const loading = status === "loading";
 
   return (
-    <div className="bg-slate-100 min-h-[100vh] text-slate-800 flex flex-col">
+    <div className=" text-slate-800 flex flex-col bg-green-500 h-full min-h-[100vh]">
       <header className="font-extrabold p-4 flex items-center">
         <h1 className="text-2xl">
           <a href="/">Recipes</a>
@@ -46,7 +46,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </ul>
         </nav>
       </header>
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 bg-blue-500 relative">
+        <div className=" inset-0 absolute">{children}</div>
+      </main>
       <footer className="h-[250px] bg-slate-300 grid place-items-center text-3xl font-bold">
         Footer
       </footer>
