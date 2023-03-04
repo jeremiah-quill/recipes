@@ -12,9 +12,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </h1>
         <nav className="ml-auto">
           <ul className="flex gap-8 items-center">
-            <li>
-              <a href="/profile">Profile</a>
-            </li>
+            {session ? (
+              <li>
+                <a href="/profile">Profile</a>
+              </li>
+            ) : null}
             <li>
               <a href="#">About</a>
             </li>
@@ -31,6 +33,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <div>{session.user?.email}</div>
                   <img
                     src={session.user?.image!}
+                    referrerPolicy="no-referrer"
                     alt="profile picture"
                     className="w-10 rounded-full border-2 border-slate-800"
                   />
