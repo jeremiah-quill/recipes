@@ -1,11 +1,4 @@
-export function Card({
-  children,
-  className,
-  ...props
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+export function Card({ children, className, ...props }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`border border-slate-300 p-4 rounded flex flex-col ${className}`} {...props}>
       {children}

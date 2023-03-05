@@ -1,4 +1,5 @@
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function Header() {
   const { data: session, status } = useSession();
@@ -6,12 +7,12 @@ export default function Header() {
   return (
     <header className="font-extrabold p-4 flex items-center">
       <h1 className="text-2xl">
-        <a href="/">Recipes</a>
+        <Link href="/">Recipes</Link>
       </h1>
       <nav className="ml-auto">
         <ul className="flex gap-8 items-center">
           <li>
-            <a href="/about">About</a>
+            <Link href="/about">About</Link>
           </li>
           {!session ? (
             <li>

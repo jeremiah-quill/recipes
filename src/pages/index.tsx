@@ -28,13 +28,10 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
         <>
           <div className="p-4 max-w-7xl mx-auto min-h-[80vh] grid md:grid-cols-2 items-center">
             <div>
-              <h2 className="text-6xl font-bold mb-8">
-                It's time to finally organize your recipes
-              </h2>
+              <h2 className="text-6xl font-bold mb-8">It's time to finally organize your recipes</h2>
               <h3 className="text-lg mb-8 count">
-                We've helped thousands of people organize their recipes. Don't put it off any
-                longer, let us help you build a personalized, modern cookbook that you'll actually
-                use.
+                We've helped thousands of people organize their recipes. Don't put it off any longer, let us help you
+                build a personalized, modern cookbook that you'll actually use.
               </h3>
               <div className="flex gap-4">
                 <OutlineButton>Browse Recipes</OutlineButton>
@@ -59,8 +56,7 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
                 <MdManageSearch className="text-3xl" />
               </IconTitle>
               <p className="p-4">
-                Take control of your eating habits and save time in the kitchen, plus never forget a
-                recipe again.
+                Take control of your eating habits and save time in the kitchen, plus never forget a recipe again.
               </p>
               <CardCallout>
                 <div className="group-hover:underline">Learn our motivation</div>
@@ -72,8 +68,7 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
                 <IoShareOutline className="text-4xl" />
               </IconTitle>
               <p className="p-4">
-                Explore our public feed to discover new recipes, or publish your own recipes to
-                share.
+                Explore our public feed to discover new recipes, or publish your own recipes to share.
               </p>
               <CardCallout>
                 <div className="group-hover:underline">View public recipes</div>
@@ -84,9 +79,7 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
               <IconTitle text="Prepare">
                 <GoChecklist className="text-4xl" />
               </IconTitle>
-              <p className="p-4">
-                Choose your meals for the week and export the ingredients to a shopping list.
-              </p>
+              <p className="p-4">Choose your meals for the week and export the ingredients to a shopping list.</p>
               <CardCallout>
                 <div className="group-hover:underline">Demo our features</div>
                 <BiRightArrowAlt className="group-hover:translate-x-1 transition-transform" />
@@ -110,12 +103,10 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
           </section>
           <section className="my-64 max-w-7xl mx-auto grid md:grid-cols-2 gap-8 p-4">
             <div className="">
-              <h3 className="text-4xl font-bold">
-                Your cookbook, your way. Organize recipes the way you want.
-              </h3>
+              <h3 className="text-4xl font-bold">Your cookbook, your way. Organize recipes the way you want.</h3>
               <p className="my-8">
-                Draft recipes with rich text, add images, and organize them into collections. Search
-                by ingredient, custom tags, or a number of different fields and attributes.
+                Draft recipes with rich text, add images, and organize them into collections. Search by ingredient,
+                custom tags, or a number of different fields and attributes.
               </p>
               <p>
                 Learn more in our{" "}
@@ -144,9 +135,6 @@ export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRe
             </div>
           </section>
         </>
-        <footer className="h-[250px] bg-slate-300 grid place-items-center text-3xl font-bold">
-          Footer
-        </footer>
       </Layout>
     </>
   );
