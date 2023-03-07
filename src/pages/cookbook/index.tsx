@@ -19,7 +19,7 @@ export default function CookbookPage({ recipes }: { recipes: any }) {
         <div className="my-6">
           <ul className="grid gap-2 md:grid-cols-3">
             {recipes.map((recipe: any) => (
-              <li className="rounded p-2 border" id={recipe.id}>
+              <li className="rounded p-2 border" key={recipe.id}>
                 {recipe.title}
               </li>
             ))}
