@@ -20,10 +20,8 @@ export default function CookbookPage({ recipes }: { recipes: Recipe[] }) {
         <div className="my-6">
           <ul className="grid gap-2 md:grid-cols-3">
             {recipes.map((recipe: Recipe) => (
-              <Link href={`/cookbook/${recipe.slug}`}>
-                <li className="rounded p-2 border" key={recipe.id}>
-                  {recipe.title}
-                </li>
+              <Link key={recipe.id} href={`/cookbook/${recipe.slug}`}>
+                <li className="rounded p-2 border">{recipe.title}</li>
               </Link>
             ))}
             <Link href={`/cookbook/test`}>
