@@ -9,6 +9,7 @@ import { GoChecklist } from "react-icons/go";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { OutlineButton } from "../components/Button";
 import { GlowCard } from "../components/Card";
+import { Card } from "../components/Card";
 import { IconTitle } from "../components/Title";
 import { CardCallout } from "../components/Card";
 import { getSession } from "next-auth/react";
@@ -49,7 +50,7 @@ export default function Home() {
             </div>
           </div>
           <section className="p-4 max-w-7xl mx-auto my-64 grid md:grid-cols-3 gap-3">
-            <GlowCard className="group" twColor="shadow-orange-300">
+            <Card className="group shadow-lg shadow-orange-300 cursor-pointer">
               <IconTitle text="Manage">
                 <MdManageSearch className="text-3xl" />
               </IconTitle>
@@ -60,8 +61,8 @@ export default function Home() {
                 <div className="group-hover:underline">Learn our motivation</div>
                 <BiRightArrowAlt className="group-hover:translate-x-1 transition-transform" />
               </CardCallout>
-            </GlowCard>
-            <GlowCard className="group" twColor="shadow-green-300">
+            </Card>
+            <Card className="group shadow-lg shadow-green-300 cursor-pointer">
               <IconTitle text="Share">
                 <IoShareOutline className="text-4xl" />
               </IconTitle>
@@ -72,8 +73,8 @@ export default function Home() {
                 <div className="group-hover:underline">View public recipes</div>
                 <BiRightArrowAlt className="group-hover:translate-x-1 transition-transform" />
               </CardCallout>
-            </GlowCard>
-            <GlowCard className="group" twColor="shadow-yellow-300">
+            </Card>
+            <Card className="group shadow-lg shadow-yellow-300 cursor-pointer">
               <IconTitle text="Prepare">
                 <GoChecklist className="text-4xl" />
               </IconTitle>
@@ -83,7 +84,7 @@ export default function Home() {
                 <BiRightArrowAlt className="group-hover:translate-x-1 transition-transform" />
               </CardCallout>
               <div className="flex gap-1 ml-auto mt-auto items-center"></div>
-            </GlowCard>
+            </Card>
           </section>
           <section className="my-64 bg-green-300 overflow-hidden">
             <div className="max-w-7xl grid md:grid-cols-2 mx-auto  ">

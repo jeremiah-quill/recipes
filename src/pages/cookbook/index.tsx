@@ -1,6 +1,8 @@
 import { getSession } from "next-auth/react";
 import DashboardLayout from "../../components/DashboardLayout";
 import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
+import { Recipe } from "@prisma/client";
 
 type User = {
   id: string;
@@ -9,8 +11,7 @@ type User = {
   image: string;
 };
 
-export default function CookbookPage({ recipes }: { recipes: any }) {
-  console.log(recipes);
+export default function CookbookPage({ recipes }: { recipes: Recipe[] }) {
   return (
     <DashboardLayout>
       <>
@@ -18,11 +19,16 @@ export default function CookbookPage({ recipes }: { recipes: any }) {
         <p className="p-2">This is the Cookbook index page. It is protected by authentication.</p>
         <div className="my-6">
           <ul className="grid gap-2 md:grid-cols-3">
-            {recipes.map((recipe: any) => (
-              <li className="rounded p-2 border" key={recipe.id}>
-                {recipe.title}
-              </li>
+            {recipes.map((recipe: Recipe) => (
+              <Link href={`/cookbook/${recipe.slug}`}>
+                <li className="rounded p-2 border" key={recipe.id}>
+                  {recipe.title}
+                </li>
+              </Link>
             ))}
+            <Link href={`/cookbook/test`}>
+              <li className="rounded p-2 border">test title</li>
+            </Link>
           </ul>
         </div>
       </>

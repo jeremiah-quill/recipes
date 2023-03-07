@@ -1,12 +1,16 @@
 import { getSession } from "next-auth/react";
 import DashboardLayout from "../../components/DashboardLayout";
+import { PrismaClient } from "@prisma/client";
+import { Recipe } from "@prisma/client";
 
-export default function RecipePage({ recipe }: any) {
+export default function RecipePage({ recipe }: { recipe: Recipe }) {
   return (
     <DashboardLayout>
       <>
-        <h1>Recipe Details</h1>
-        <p>This is the details page for {recipe}. It is protected by authentication.</p>
+        <h1 className="text-3xl font-bold underline">{recipe.title}</h1>
+        <p>This is the details page for {recipe.title}. It is protected by authentication.</p>
+        <p>The ingredients are: {recipe.ingredients}</p>
+        <p>The instructions are: {recipe.instructions}</p>
       </>
     </DashboardLayout>
   );
@@ -24,11 +28,29 @@ export async function getServerSideProps(context: any) {
     };
   }
 
-  // get slug to use when fetching recipe details
-  const { recipe } = context.params;
+  const prisma = new PrismaClient();
 
-  // TODO: Fetch recipe details from database and return them as props if they exist, otherwise redirect to 404 page
+  const slug = context.params.recipe;
+
+  // TODO: make this a findUnique after changing slug to be unique in prisma model and db
+  const recipe: Recipe[] = await prisma.recipe.findMany({
+    where: {
+      slug: slug,
+    },
+  });
+
+  if (recipe.length === 0) {
+    return {
+      redirect: {
+        destination: "/cookbook",
+        permanent: false,
+      },
+    };
+  }
+
+  const serializedRecipe = JSON.parse(JSON.stringify(recipe[0]));
+
   return {
-    props: { recipe },
+    props: { recipe: serializedRecipe },
   };
 }
