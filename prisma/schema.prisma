@@ -50,21 +50,22 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Ingredient {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String
-  recipes  RecipeToIngredient[]
-}
-model Instruction {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  content      String
-  // recipe    Recipe   @relation(fields: [recipeId], references: [id])
-  recipeId  Int
-}
+// model Ingredient {
+//   id        Int      @id @default(autoincrement())
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   name      String
+//   recipes  RecipeToIngredient[]
+// }
+// model Instruction {
+//   id        Int      @id @default(autoincrement())
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   step      Int
+//   instruction      String
+//   recipe    Recipe   @relation(fields: [recipeId], references: [id])
+//   recipeId  Int
+// }
 
 model Recipe {
   id        Int      @id @default(autoincrement())
@@ -72,8 +73,9 @@ model Recipe {
   updatedAt DateTime @updatedAt
   title     String
   instructions String
+  ingredients String
   // instructions Instruction[]
-  ingredients RecipeToIngredient[]
+  // ingredients RecipeToIngredient[]
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String
   duration Int
@@ -87,13 +89,13 @@ model Tag {
   recipes  Recipe[]
 }
 
-model RecipeToIngredient {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  recipe    Recipe   @relation(fields: [recipeId], references: [id])
-  recipeId  Int
-  ingredient Ingredient @relation(fields: [ingredientId], references: [id])
-  ingredientId Int
-  quantityOfMeasurement String
-}
+// model RecipeToIngredient {
+//   id        Int      @id @default(autoincrement())
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   recipe    Recipe   @relation(fields: [recipeId], references: [id])
+//   recipeId  Int
+//   ingredient Ingredient @relation(fields: [ingredientId], references: [id])
+//   ingredientId Int
+//   quantityOfMeasurement String
+// }

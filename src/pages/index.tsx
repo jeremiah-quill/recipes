@@ -13,9 +13,7 @@ import { IconTitle } from "../components/Title";
 import { CardCallout } from "../components/Card";
 import { getSession } from "next-auth/react";
 
-export default function Home({ allUsers, allRecipes }: { allUsers: User[]; allRecipes: any }) {
-  console.log(allUsers);
-  console.log(allRecipes);
+export default function Home() {
   return (
     <>
       <Head>
@@ -151,24 +149,4 @@ export async function getServerSideProps(context: any) {
       },
     };
   }
-  const prisma = new PrismaClient();
-
-  const allUsers = await prisma.user.findMany({
-    include: {
-      recipes: true,
-    },
-  });
-
-  const allRecipes = await prisma.recipe.findMany({
-    include: {
-      author: true,
-    },
-  });
-
-  return {
-    props: {
-      allUsers: JSON.parse(JSON.stringify(allUsers)),
-      allRecipes: JSON.parse(JSON.stringify(allRecipes)),
-    },
-  };
 }
