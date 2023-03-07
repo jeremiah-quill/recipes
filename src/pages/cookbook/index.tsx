@@ -14,22 +14,16 @@ export default function CookbookPage({ recipes }: { recipes: any }) {
   return (
     <DashboardLayout>
       <>
-        <h1>Cookbook index</h1>
-        <p>This is the Cookbook index page. It is protected by authentication.</p>
+        <h1 className="text-3xl font-bold underline">Cookbook index</h1>
+        <p className="p-2">This is the Cookbook index page. It is protected by authentication.</p>
         <div className="my-6">
-          {recipes.map((recipe: any) => (
-            <div key={recipe.id}>
-              <h2>
-                <span className="font-bold text-2xl">Recipe Title:</span> {recipe.title}
-              </h2>
-              <p>
-                <span className="font-bold text-2xl">Ingredients:</span> {recipe.ingredients}
-              </p>
-              <p>
-                <span className="font-bold text-2xl">Instructions:</span> {recipe.instructions}
-              </p>
-            </div>
-          ))}
+          <ul className="grid gap-2 md:grid-cols-3">
+            {recipes.map((recipe: any) => (
+              <li className="rounded p-2 border" id={recipe.id}>
+                {recipe.title}
+              </li>
+            ))}
+          </ul>
         </div>
       </>
     </DashboardLayout>
