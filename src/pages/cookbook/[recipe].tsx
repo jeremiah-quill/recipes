@@ -35,7 +35,7 @@ export async function getServerSideProps(context: any) {
   // TODO: make this a findUnique after changing slug to be unique in prisma model and db
   const recipe: Recipe[] = await prisma.recipe.findMany({
     where: {
-      slug: slug,
+      slug: slug as string,
     },
   });
 
