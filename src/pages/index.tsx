@@ -146,7 +146,6 @@ export async function getServerSideProps(context: any) {
     return {
       redirect: {
         destination: "/cookbook",
-        permanent: false,
       },
     };
   }
