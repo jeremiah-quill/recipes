@@ -3,7 +3,7 @@ import DashboardLayout from "../../components/DashboardLayout";
 import { PrismaClient } from "@prisma/client";
 import { Recipe } from "@prisma/client";
 
-export default function RecipePage({ recipe }: { recipe: Recipe }) {
+export default function RecipePage({ recipe }) {
   return (
     <DashboardLayout>
       <>
@@ -16,7 +16,7 @@ export default function RecipePage({ recipe }: { recipe: Recipe }) {
   );
 }
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(context) {
   const session = await getSession(context);
 
   if (!session) {
@@ -30,7 +30,7 @@ export async function getServerSideProps(context: any) {
 
   const prisma = new PrismaClient();
 
-  const slug = context.params.recipe as string;
+  const slug = context.params.recipe;
 
   // TODO: make this a findUnique after changing slug to be unique in prisma model and db
   const recipe = await prisma.recipe.findMany({
