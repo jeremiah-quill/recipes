@@ -4,20 +4,19 @@ import { PrismaClient } from "@prisma/client";
 import { Recipe } from "@prisma/client";
 
 export default function RecipePage({ recipe }) {
-  console.log("recipe", recipe);
   return (
     <DashboardLayout>
       <>
         <h1 className="text-3xl font-bold underline">{recipe.title}</h1>
         <p className="p-2">This is the details page for {recipe.title}. It is protected by authentication.</p>
-        {/* <h2 className="font-bold text-xl">Ingredients</h2> */}
-        {/* <ul className="p-2">
-          {recipe.ingredients.map((ingredient) => (
-            <li key={instruction.id}>
-              {instruction.stepNumber}. {instruction.instruction}
+        <h2 className="font-bold text-xl">Ingredients</h2>
+        <ul className="p-2">
+          {recipe.ingredients.map((recipe) => (
+            <li key={recipe.id}>
+              * {recipe.quantity} {recipe.unitOfMeasure} {recipe.name}
             </li>
           ))}
-        </ul> */}
+        </ul>
         <h2 className="font-bold text-xl">Instructions</h2>
         <ul className="p-2">
           {recipe.instructions.map((instruction) => (
@@ -55,6 +54,7 @@ export async function getServerSideProps(context) {
     },
     include: {
       instructions: true,
+      ingredients: true,
     },
   });
 

@@ -50,13 +50,28 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-// model Ingredient {
-//   id        Int      @id @default(autoincrement())
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-//   name      String
-//   recipes  RecipeToIngredient[]
-// }
+// TODO: work on this to include more fields
+enum UnitOfMeasure {
+  GRAMS
+  KILOGRAMS
+  MILLILITERS
+  LITERS
+  CUPS
+  TEASPOONS
+  TABLESPOONS
+  UNITS
+}
+
+model Ingredient {
+  id            Int         @id @default(autoincrement())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  name          String
+  unitOfMeasure UnitOfMeasure
+  quantity      String
+  recipes       Recipe[]
+}
+
 model Instruction {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
@@ -68,16 +83,15 @@ model Instruction {
   @@unique ([recipeId, stepNumber], name: "stepIdentifier")
 }
 
+// TODO: should slug also be unique? do I need slug at all?
 model Recipe {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   title     String
   slug      String  
-  // instructions String
-  ingredients String
+  ingredients Ingredient[]
   instructions Instruction[]
-  // ingredients RecipeToIngredient[]
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String
   duration Int
@@ -86,19 +100,9 @@ model Recipe {
   @@unique ([authorId, title], name: "titleIdentifier")
 }
 
+// TODO: start seeding with tags
 model Tag {
   id        Int      @id @default(autoincrement())
   name      String
   recipes  Recipe[]
 }
-
-// model RecipeToIngredient {
-//   id        Int      @id @default(autoincrement())
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-//   recipe    Recipe   @relation(fields: [recipeId], references: [id])
-//   recipeId  Int
-//   ingredient Ingredient @relation(fields: [ingredientId], references: [id])
-//   ingredientId Int
-//   quantityOfMeasurement String
-// }
