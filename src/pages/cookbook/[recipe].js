@@ -4,13 +4,28 @@ import { PrismaClient } from "@prisma/client";
 import { Recipe } from "@prisma/client";
 
 export default function RecipePage({ recipe }) {
+  console.log("recipe", recipe);
   return (
     <DashboardLayout>
       <>
         <h1 className="text-3xl font-bold underline">{recipe.title}</h1>
-        <p>This is the details page for {recipe.title}. It is protected by authentication.</p>
-        <p>The ingredients are: {recipe.ingredients}</p>
-        <p>The instructions are: {recipe.instructions}</p>
+        <p className="p-2">This is the details page for {recipe.title}. It is protected by authentication.</p>
+        {/* <h2 className="font-bold text-xl">Ingredients</h2> */}
+        {/* <ul className="p-2">
+          {recipe.ingredients.map((ingredient) => (
+            <li key={instruction.id}>
+              {instruction.stepNumber}. {instruction.instruction}
+            </li>
+          ))}
+        </ul> */}
+        <h2 className="font-bold text-xl">Instructions</h2>
+        <ul className="p-2">
+          {recipe.instructions.map((instruction) => (
+            <li key={instruction.id}>
+              {instruction.stepNumber}. {instruction.instruction}
+            </li>
+          ))}
+        </ul>
       </>
     </DashboardLayout>
   );
@@ -27,14 +42,19 @@ export async function getServerSideProps(context) {
     };
   }
 
+  // pull out slug from params.  if the slug doesn't exist in our user's recipes, redirect to cookbook index
   const prisma = new PrismaClient();
 
   const slug = context.params.recipe;
 
-  // TODO: make this a findUnique after changing slug to be unique in prisma model and db
+  // TODO: refactor to more efficiently query for a single recipe
   const recipe = await prisma.recipe.findMany({
     where: {
       slug: { equals: slug },
+      authorId: session?.user?.id,
+    },
+    include: {
+      instructions: true,
     },
   });
 

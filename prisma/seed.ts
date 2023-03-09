@@ -3,13 +3,14 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  // const user1 = await prisma.user.create({
+  // const user = await prisma.user.create({
   //   data: {
-  //     name: "test user 1",
-  //     email: "testuser1@gmail.com",
+  //     name: "Jeremiah Quill",
+  //     email: "jcq5010@gmail.com",
   //     recipes: {
   //       create: {
   //         title: "Scrambled Eggs",
+  //         slug: "scrambled-eggs",
   //         duration: 10,
   //         serves: 2,
   //         instructions: "Beat eggs. Heat pan. Add eggs to pan and scramble until cooked.",
@@ -18,7 +19,6 @@ async function main() {
   //     },
   //   },
   // });
-
   // const user2 = await prisma.user.create({
   //   data: {
   //     name: "test user 2",
@@ -35,22 +35,36 @@ async function main() {
   //     },
   //   },
   // });
-
-  const jqrecipe = await prisma.recipe.create({
-    data: {
-      title: "JQ Recipe",
-      duration: 10,
-      serves: 2,
-      instructions: "Make the food by doing these instructions!",
-      ingredients: "This is a list of ingredients",
-      author: {
-        connect: {
-          id: "clexj3q270000ydz8f5b77wnb",
-        },
-      },
-    },
-  });
-
+  // const jqrecipe = await prisma.recipe.create({
+  //   data: {
+  //     title: "Corn Chowder",
+  //     slug: "corn-chowder",
+  //     duration: 30,
+  //     serves: 8,
+  //     instructions: {
+  //       create: [
+  //         {
+  //           stepNumber: 1,
+  //           instruction: "Placeholder instruction 1",
+  //         },
+  //         {
+  //           stepNumber: 2,
+  //           instruction: "Placeholder instruction 2",
+  //         },
+  //         {
+  //           stepNumber: 3,
+  //           instruction: "Placeholder instruction 3",
+  //         },
+  //       ],
+  //     },
+  //     ingredients: "This is a list of ingredients",
+  //     author: {
+  //       connect: {
+  //         id: "clf0i0wbg000qyd2en2xwmvn3",
+  //       },
+  //     },
+  //   },
+  // });
   // console.log({ jqrecipe });
 }
 

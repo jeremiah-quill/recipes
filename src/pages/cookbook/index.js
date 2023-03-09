@@ -2,14 +2,6 @@ import { getSession } from "next-auth/react";
 import DashboardLayout from "../../components/DashboardLayout";
 import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
-import { Recipe } from "@prisma/client";
-
-// type User = {
-//   id: string;
-//   name: string;
-//   email: string;
-//   image: string;
-// };
 
 export default function CookbookPage({ recipes }) {
   return (
@@ -35,6 +27,7 @@ export default function CookbookPage({ recipes }) {
 }
 
 export async function getServerSideProps(context) {
+  // get session from context, if no session, redirect to home page
   const session = await getSession(context);
 
   if (!session) {
@@ -45,6 +38,7 @@ export async function getServerSideProps(context) {
     };
   }
 
+  // get all recipes for the user, serialize them, and pass them to the page
   const prisma = new PrismaClient();
 
   const recipes = await prisma.recipe.findMany({
@@ -52,7 +46,6 @@ export async function getServerSideProps(context) {
       authorId: session?.user?.id,
     },
   });
-
   const serializedRecipes = JSON.parse(JSON.stringify(recipes));
 
   return {
