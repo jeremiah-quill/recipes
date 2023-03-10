@@ -20,13 +20,13 @@ export default function Header() {
             </li>
           ) : (
             <>
-              <div className="flex gap-2 items-center border-2 border-slate-800 px-2 py-1 rounded">
+              <div className="font-normal flex gap-2 items-center bg-slate-200 rounded-full pl-4">
                 <div>{session.user?.email}</div>
                 <img
                   src={session.user?.image!}
                   referrerPolicy="no-referrer"
                   alt="profile picture"
-                  className="w-10 rounded-full border-2 border-slate-800"
+                  className="w-10 rounded-full "
                 />
               </div>
               <li>

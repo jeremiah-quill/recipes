@@ -7,10 +7,10 @@ export default function DashboardLayout({ children }: { children: JSX.Element })
     <Layout isDashboard={true}>
       <div className=" inset-0 absolute">
         <div className="h-full grid grid-cols-12">
-          <div className="col-span-2 border-2">
+          <div className="col-span-2 border">
             <Sidebar />
           </div>
-          <div className="p-2 col-span-10 border-2 border-l-0">{children}</div>
+          <div className="p-2 col-span-10 border border-l-0 overflow-scroll">{children}</div>
         </div>
       </div>
     </Layout>

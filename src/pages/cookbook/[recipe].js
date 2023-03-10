@@ -1,7 +1,6 @@
 import { getSession } from "next-auth/react";
 import DashboardLayout from "../../components/DashboardLayout";
 import { PrismaClient } from "@prisma/client";
-import { Recipe } from "@prisma/client";
 
 export default function RecipePage({ recipe }) {
   return (
@@ -9,7 +8,11 @@ export default function RecipePage({ recipe }) {
       <>
         <h1 className="text-3xl font-bold underline">{recipe.title}</h1>
         <p className="p-2">This is the details page for {recipe.title}. It is protected by authentication.</p>
-        <h2 className="font-bold text-xl">Ingredients</h2>
+        <div className="grid grid-cols-4 bg-green-300">
+          <div className="col-span-2 bg-red-300 p-2">this is the first column</div>
+          <div className="col-span-2 bg-blue-300 p-2">this is the second column</div>
+        </div>
+        {/* <h2 className="font-bold text-xl">Ingredients</h2>
         <ul className="p-2">
           {recipe.ingredients.map((recipe) => (
             <li key={recipe.id}>
@@ -24,7 +27,7 @@ export default function RecipePage({ recipe }) {
               {instruction.stepNumber}. {instruction.instruction}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </>
     </DashboardLayout>
   );
