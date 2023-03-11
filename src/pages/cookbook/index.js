@@ -105,7 +105,7 @@ export default function CookbookPage({ recipes }) {
                       </tr>
                     ))}
                     {Array.apply(null, Array(30)).map((x, i) => (
-                      <FakeRecipe />
+                      <FakeRecipe key={i} />
                     ))}
                   </tbody>
                 </table>
