@@ -69,8 +69,7 @@ model Ingredient {
   name          String
   unitOfMeasure UnitOfMeasure
   quantity      String
-  recipe    Recipe   @relation(fields: [recipeId], references: [id])
-  recipeId  Int
+  recipes      Recipe[]
 }
 
 model Instruction {

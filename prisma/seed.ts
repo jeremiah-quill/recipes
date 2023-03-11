@@ -5,8 +5,8 @@ const prisma = new PrismaClient();
 async function main() {
   // const jqrecipe = await prisma.recipe.create({
   //   data: {
-  //     title: "Chile",
-  //     slug: "chile",
+  //     title: "Tacos",
+  //     slug: "tacos",
   //     duration: 30,
   //     serves: 8,
   //     instructions: {
