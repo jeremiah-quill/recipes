@@ -2,7 +2,13 @@ import Link from "next/link";
 import Layout from "@/components/Layout";
 import Sidebar from "@/components/Sidebar";
 
-export default function DashboardLayout({ children, ingredients }: { children: JSX.Element; ingredients: string[] }) {
+export default function DashboardLayout({
+  children,
+  ingredients = [],
+}: {
+  children: JSX.Element;
+  ingredients?: string[];
+}) {
   return (
     <Layout isDashboard={true}>
       <div className="inset-0 absolute">
