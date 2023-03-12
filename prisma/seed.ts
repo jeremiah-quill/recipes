@@ -5,8 +5,8 @@ const prisma = new PrismaClient();
 async function main() {
   // const jqrecipe = await prisma.recipe.create({
   //   data: {
-  //     title: "Tacos",
-  //     slug: "tacos",
+  //     title: "Chicken Noodle Soup",
+  //     slug: "chicken-noodle-soup",
   //     duration: 30,
   //     serves: 8,
   //     instructions: {
@@ -41,7 +41,7 @@ async function main() {
   //     },
   //     author: {
   //       connect: {
-  //         id: "clf468ch70002yd1e9xhypz4a",
+  //         email: "jcq5010@gmail.com",
   //       },
   //     },
   //   },

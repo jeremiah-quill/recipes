@@ -20,7 +20,7 @@ export default function Header() {
             </li>
           ) : (
             <>
-              <div className="font-normal flex gap-2 items-center bg-slate-200 rounded-full pl-4">
+              {/* <div className="font-normal flex gap-2 items-center bg-slate-200 rounded-full pl-4">
                 <div>{session.user?.email}</div>
                 <img
                   src={session.user?.image!}
@@ -31,7 +31,7 @@ export default function Header() {
               </div>
               <li>
                 <a href={`/api/auth/signout`}>Sign Out</a>
-              </li>
+              </li> */}
             </>
           )}
         </ul>
