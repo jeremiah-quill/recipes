@@ -13,7 +13,7 @@ export default function Layout({
   const loading = status === "loading";
 
   return (
-    <div className=" text-slate-800 flex flex-col h-full min-h-[100vh]">
+    <div className=" text-slate-800 flex flex-col h-full min-h-[100dvh]">
       <Header />
       <main className="flex-1 relative">{children}</main>
       {!isDashboard && <Footer />}
