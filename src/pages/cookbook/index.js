@@ -5,37 +5,39 @@ import Link from "next/link";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { SlOptionsVertical } from "react-icons/sl";
 import { useState } from "react";
+import { ListStateContext } from "@/context/ListContext";
+import { useContext } from "react";
 
 function FakeRecipe() {
   return (
     <tr>
-      <td className="py-4 px-6">
+      <td className="py-2 px-4">
         <button className="cursor-pointer hover:bg-slate-200 p-2 active:scale-[95%] rounded">
           <MdOutlineAddShoppingCart className="h-full text-slate-800" />
         </button>
       </td>
-      <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+      <td className="py-2 px-4 text-sm font-medium text-gray-900 whitespace-nowrap">
         <Link className="hover:underline" href={`/cookbook`}>
           <div>Fake Title</div>
         </Link>
       </td>
-      <td scope="col" className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+      <td scope="col" className="py-2 px-4 text-sm font-medium text-gray-500 whitespace-nowrap">
         3/11/2023
       </td>
-      <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">Beef</td>
+      {/* <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">Beef</td>
       <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">10</td>
       <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">45</td>
       <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
         <button className="cursor-pointer hover:bg-slate-200 p-2 active:scale-[95%] rounded">
           <SlOptionsVertical />
         </button>
-      </td>
+      </td> */}
     </tr>
   );
 }
 
 export default function CookbookPage({ recipes }) {
-  const [ingredients, setIngredients] = useState(["potatoes", "onions", "beef"]);
+  const { ingredientState } = useContext(ListStateContext);
 
   if (!recipes) return <div>loading...</div>;
   console.log(recipes);
@@ -46,7 +48,7 @@ export default function CookbookPage({ recipes }) {
   };
 
   return (
-    <DashboardLayout ingredients={ingredients}>
+    <DashboardLayout>
       <>
         <div className="flex flex-col max-h-screen relative">
           <table className="min-w-full relative">
@@ -54,20 +56,20 @@ export default function CookbookPage({ recipes }) {
               <tr>
                 <th
                   scope="col"
-                  className="bg-slate-200 sticky top-0 z-10  py-3 px-6 text-xs font-medium tracking-wider text-left text-slate-800 uppercase">
-                  +List
+                  className="bg-slate-200 sticky top-0 z-10  py-2 px-4 text-xs font-medium tracking-wider text-left text-slate-800 uppercase">
+                  {/* +List */}
                 </th>
                 <th
                   scope="col"
-                  className="bg-slate-200 sticky top-0 py-3 px-6 text-xs font-medium tracking-wider text-left text-slate-800 uppercase">
+                  className="bg-slate-200 sticky top-0 py-2 px-4 text-xs font-medium tracking-wider text-left text-slate-800 uppercase">
                   Recipe
                 </th>
                 <th
                   scope="col"
-                  className="bg-slate-200 sticky top-0 py-3 px-6 text-xs font-medium tracking-wider text-left text-slate-800 uppercase">
+                  className="bg-slate-200 sticky top-0 py-2 px-4 text-xs font-medium tracking-wider text-left text-slate-800 uppercase">
                   Last updated
                 </th>
-                <th
+                {/* <th
                   scope="col"
                   className="bg-slate-200 sticky top-0 py-3 px-6 text-xs font-medium tracking-wider text-left text-slate-800 uppercase">
                   Main
@@ -85,27 +87,30 @@ export default function CookbookPage({ recipes }) {
                 <th
                   scope="col"
                   className="bg-slate-200 sticky top-0 py-3 px-6 text-xs font-medium tracking-wider text-left text-slate-800 uppercase">
-                  {/* More */}
-                </th>
+                </th> */}
               </tr>
             </thead>
             <tbody className=" divide-y divide-gray-200">
               {recipes.map((recipe) => (
                 <tr key={recipe.id}>
-                  <td className="py-4 px-6">
-                    <button className="cursor-pointer hover:bg-slate-200 p-2 active:scale-[95%] rounded">
+                  <td className="py-2 px-4">
+                    <button
+                      className="cursor-pointer hover:bg-slate-200 p-2 active:scale-[95%] rounded"
+                      onClick={() =>
+                        ingredientState.addIngredients(recipe.ingredients.map((ingredient) => ingredient.title))
+                      }>
                       <MdOutlineAddShoppingCart className="h-full text-slate-800" />
                     </button>
                   </td>
-                  <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                  <td className="py-2 px-4 text-sm font-medium text-gray-900 whitespace-nowrap">
                     <Link className="hover:underline" href={`/cookbook/${recipe.slug}`}>
                       {recipe.title}
                     </Link>
                   </td>
-                  <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                  <td className="py-2 px-4 text-sm font-medium text-gray-500 whitespace-nowrap">
                     {getDate(recipe.updatedAt)}
                   </td>
-                  <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">Beef</td>
+                  {/* <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">Beef</td>
                   <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
                     {recipe.ingredients.length}
                   </td>
@@ -114,7 +119,7 @@ export default function CookbookPage({ recipes }) {
                     <button className="cursor-pointer hover:bg-slate-200 p-2 active:scale-[95%] rounded">
                       <SlOptionsVertical />
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
               {Array.apply(null, Array(20)).map((x, i) => (

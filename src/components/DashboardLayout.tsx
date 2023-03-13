@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import Sidebar from "@/components/Sidebar";
+import { ListProvider } from "@/context/ListContext";
 
 export default function DashboardLayout({
   children,
@@ -16,8 +17,8 @@ export default function DashboardLayout({
           <div className="mt-auto lg:mt-0 order-1 lg:col-span-2 col-span-12 border-top border border-l-0 flex flex-col">
             <Sidebar className="flex w-full sticky lg:block" />
             {/* <div className="mt-auto p-2">
-              <QuickList ingredients={ingredients} />
-            </div> */}
+                <QuickList ingredients={ingredients} />
+              </div> */}
           </div>
           <div className="lg:order-2 col-span-12 lg:col-span-10 border border-l-0 overflow-scroll">{children}</div>
         </div>
